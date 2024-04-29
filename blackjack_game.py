@@ -81,7 +81,6 @@ class Table():
     # run game
     def run(self):
         while True:
-            print(self)
             player_move = self.player.hit_stay()
             if player_move is True:
                 self.deal_card(self.player)
@@ -102,7 +101,6 @@ class Table():
             if score < 17:
                 self.deal_card(self.dealer)
                 self.calc_score(self.dealer)
-                print(self)
             elif score >= 17:
                 self.final_score()
 
@@ -121,11 +119,9 @@ class Table():
 
     def check_hand(self, score, player):
         if score > 21:
-            print(self)
             print(f"{player.name} busts!")
             self.end()
         elif score == 21:
-            print(self)
             print(f"{player.name} has Blackjack! You win!")
             self.end()
         else:
@@ -148,13 +144,11 @@ class Table():
         if player_acc >= 10:
             play_again = input("Would you like to play again? (y/n)").lower()
             if play_again == 'y':
-                self.__init__(self.player.name, funds=self.player.cash)
-            elif play_again == 'n':
+                blackjack()
+            else: 
                 print(f"Thanks for playing!")
                 return 
-        elif player_acc < 10:
-            print("You do not have any more money!")
-            return 
+        
 
 def blackjack():
     player_name = input('Welcome to BlackJack! Please input your name:   ')
